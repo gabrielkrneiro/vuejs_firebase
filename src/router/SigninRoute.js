@@ -1,7 +1,10 @@
-import Signin from '../components/signin/Signin';
+// import Signin from '../components/signin/Signin';
+
+const Signin = () => System.import('@/components/signin/Signin');
+
 
 export default  {
-    path : '/',
+    path : '/signin',
     name : 'Signin',
     component : Signin
 }

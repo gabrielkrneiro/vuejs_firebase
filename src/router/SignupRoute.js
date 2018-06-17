@@ -1,7 +1,9 @@
-import Signup from '../components/signup/Signup';
+// import Signup from '../components/signup/Signup';
+
+const Signup = () => System.import('@/components/signup/Signup');
 
 export default  {
-    path : '/',
+    path : '/signup',
     name : 'Signup',
     component : Signup
 }

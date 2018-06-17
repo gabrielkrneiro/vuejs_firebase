@@ -15,5 +15,5 @@
 </script>
 
 <style lang="sass" scoped>
-
+    @import './Landing';
 </style>

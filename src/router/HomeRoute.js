@@ -1,7 +1,10 @@
-import Home from '../components/home/Home';
+// import Home from '../components/home/Home'
+
+// using Lazy loading
+const Home = () => System.import('@/components/home/Home.vue');
 
 export default  {
-    path : '/',
+    path : '/home',
     name : 'Home',
     component : Home
 }
