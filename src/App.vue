@@ -1,8 +1,12 @@
 <template>
   <v-app>
 
-    <v-navigation-drawer v-model="sidebar" app>
+    <v-navigation-drawer class="hidden-sm-and-up" v-model="sidebar" app>
       <v-list>
+
+        <!-- 
+          :to="" replaces in this case <router-link tag="li" to="/foo">
+         -->
         <v-list-tile 
           v-for="item in menuItems"
           :key="item.title"
@@ -12,7 +16,9 @@
             <v-icon>{{ item.icon }}</v-icon>
           </v-list-tile-action>
 
-          <v-list-tile-content>{{ item.title }}</v-list-tile-content>
+          <v-list-tile-content>
+            {{ item.title }}
+          </v-list-tile-content>
 
         </v-list-tile>
       </v-list>
@@ -23,6 +29,20 @@
         <v-toolbar-side-icon  @click="sidebar = !sidebar"></v-toolbar-side-icon>
       </span>
       <v-toolbar-title>{{ appTitle }}</v-toolbar-title>
+      <v-spacer></v-spacer>
+
+      <!-- hide in xs screens -->
+      <v-toolbar-items class="hidden-xs-only">
+        <!-- flat button -->
+        <v-btn
+          flat
+          v-for="item in menuItems"
+          :key="item.title"
+          :to="item.path">
+          <v-icon light>{{ item.icon }}</v-icon>
+
+        </v-btn>
+      </v-toolbar-items>
     </v-toolbar>
 
     <v-content>
