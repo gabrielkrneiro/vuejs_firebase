@@ -28,7 +28,11 @@
       <span class="hidden-sm-and-up">
         <v-toolbar-side-icon  @click="sidebar = !sidebar"></v-toolbar-side-icon>
       </span>
-      <v-toolbar-title>{{ appTitle }}</v-toolbar-title>
+      <v-toolbar-title>
+        <router-link :to="{name : 'Home'}" class="toolbar-title">
+          {{ appTitle }}
+        </router-link>
+      </v-toolbar-title>
       <v-spacer></v-spacer>
 
       <!-- hide in xs screens -->
@@ -69,5 +73,10 @@
 </script>
 
 <style lang="scss" scoped>
-
+  .toolbar-title
+  {
+    cursor:pointer;
+    color: inherit;
+    text-decoration: none;
+  }
 </style>

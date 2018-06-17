@@ -16,7 +16,7 @@
                 <v-btn color="primary" :to="{name : 'Signup'}">
                     Sign Up
                 </v-btn>
-                <v-btn to="{name : 'Signin'}"> 
+                <v-btn :to="{name : 'Signin'}"> 
                     Sign In 
                 </v-btn>
             </v-flex>
