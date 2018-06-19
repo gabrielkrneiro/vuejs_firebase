@@ -60,13 +60,19 @@
   export default {
     data () {
       return {
-        appTitle: 'Awesome App',
+        //appTitle: 'Awesome App',
         sidebar: false,
         menuItems: [
           { title: 'Home', path: {name : 'Home'}, icon: 'home' },
           { title: 'Sign Up', path: {name : 'Signup'}, icon: 'face' },
           { title: 'Sign In', path: {name : 'Signin'}, icon: 'lock_open' }
         ]
+      }
+    },
+
+    computed : {
+      appTitle() {
+        return this.$store.state.appTitle
       }
     }
   }
