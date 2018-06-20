@@ -22,6 +22,7 @@ export const store = new Vuex.Store( {
 
     },
 
+    // store the object state handlers (setters)
     mutations : {
         
         setUser(state, payload) {
@@ -41,6 +42,7 @@ export const store = new Vuex.Store( {
 
     },
 
+    // requested by the another components
     actions :   {
 
         userSignup({commit}, user) {
@@ -50,6 +52,7 @@ export const store = new Vuex.Store( {
                 .auth()
                 .createUserWithEmailAndPassword(user.email, user.password)
                 .then(
+                    
                     firebaseUser => {
 
                         commit('setUser', {email : firebaseUser.email});
@@ -65,6 +68,30 @@ export const store = new Vuex.Store( {
                     }
                 )
 
+        },
+
+        userSignIn({commit}, form)
+        {
+            commit('setLoading', true);
+            firebase
+                .auth()
+                .signInWithEmailAndPassword(form.email, form.password)
+                .then(
+
+                    firebaseUser => {
+
+                        commit('setUser', { email : firebaseUser.email });
+                        commit('setLoading', false);
+                        commit('setError', null)
+                        router.push({ name : 'Home' });
+                    },
+
+                    error => {
+
+                        commit('setError', error.message);
+                        commit('setLoading', false)
+                    }
+                )
         }
     },
 
