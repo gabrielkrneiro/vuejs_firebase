@@ -55,10 +55,10 @@ export const store = new Vuex.Store( {
                     
                     firebaseUser => {
 
-                        commit('setUser', {email : firebaseUser.email});
+                        commit('setUser', { email : firebaseUser.email });
                         commit('setLoading', false);
                         commit('setError',null);
-                        router.push({name : 'Home'});
+                        router.push({ name : 'Home' });
                     },
 
                     error => {
@@ -92,15 +92,35 @@ export const store = new Vuex.Store( {
                         commit('setLoading', false)
                     }
                 )
+        },
+
+        autoSignIn( {commit}, firebaseUser ) {
+
+            commit( 'setLoading', true );
+            commit( 'setUser', { email : firebaseUser.email } );
+
+            ( firebaseUser.email ) ? console.log('logged') : console.log('not logged');
+
+            commit( 'setLoading', false );
+        },
+
+        userSignOut( {commit} ) {
+
+            commit( 'setLoading', true );
+            firebase
+                .auth()
+                .signOut();
+            commit( 'setUser', null );
+            commit( 'setLoading', false );
+            router.push( { name : 'Landing' } );
         }
     },
 
     getters : {
 
-        getUser(state) {
-            
-            return state.user;
-        }
+        isAuthenticated( state ) {
 
+            return state.user !== null && state.user !== undefined;
+        }
     }
 });

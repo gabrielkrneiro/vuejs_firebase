@@ -20,6 +20,19 @@ new Vue({
   el: '#app',
   router,
   store,
+  created () {
+    firebase
+      .auth()
+      .onAuthStateChanged(
+        firebaseUser => {
+          if( firebaseUser ) {
+            store.dispatch( 'autoSignIn', firebaseUser );
+
+          }
+
+        }
+      )
+  },
   components: { App },
   template: '<App/>'
 })
