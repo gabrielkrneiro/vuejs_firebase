@@ -113,6 +113,11 @@ export const store = new Vuex.Store( {
             commit( 'setUser', null );
             commit( 'setLoading', false );
             router.push( { name : 'Landing' } );
+        },
+
+        setError( {commit}, payload ) {
+
+            commit('setError', payload.message);
         }
     },
 

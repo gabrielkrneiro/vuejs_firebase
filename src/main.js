@@ -8,31 +8,36 @@ import 'vuetify/dist/vuetify.min.css'
 import {store} from './store/index.js'
 import {configure} from './firebaseConfigure.js'
 import firebase from 'firebase'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faCoffee } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import { dom } from '@fortawesome/fontawesome-svg-core'
 
 Vue.use(Vuetify)
+Vue.component('font-awesome-icon', FontAwesomeIcon)
+dom.watch();
 
 firebase.initializeApp(configure);
 
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
-new Vue({
-  el: '#app',
-  router,
-  store,
-  created () {
-    firebase
-      .auth()
-      .onAuthStateChanged(
-        firebaseUser => {
-          if( firebaseUser ) {
-            store.dispatch( 'autoSignIn', firebaseUser );
+const unsubscribe = firebase
+  .auth()
+  .onAuthStateChanged((firebaseUser) => {
+    new Vue({
+      el: '#app',
+      router,
+      store,
+      render: h => h( App ),
+      created () {
 
-          }
+        if ( firebaseUser ) {
 
+          store.dispatch( 'autoSignIn', firebaseUser )
         }
-      )
-  },
-  components: { App },
-  template: '<App/>'
-})
+      }
+    })
+
+    unsubscribe()
+  })
