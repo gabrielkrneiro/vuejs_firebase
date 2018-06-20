@@ -71,7 +71,9 @@
     },
 
     computed : {
-      appTitle() {
+      
+      appTitle() 
+      {
         return this.$store.state.appTitle
       }
     }
