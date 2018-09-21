@@ -1,27 +1,43 @@
-# demo-app
 
-> A Vue.js project
+<h1> VueJS_Firebase</h1>
 
-## Build Setup
+Author: <b>Gabriel M. Carneiro</b> <br>
+E-mail: <b>carneiro.development@gmail.com</b>
 
-``` bash
-# install dependencies
-npm install
+<h2>The Project</h2>
 
-# serve with hot reload at localhost:8080
-npm run dev
+Developed in VueJS, this project is a example how to use VueJS integrated with Google Firebase using less effort possible, improving your project`s reliability and making it runtime.
 
-# build for production with minification
-npm run build
+<h2> Requirements </h2>
 
-# build for production and view the bundle analyzer report
-npm run build --report
+ - [ ] You have to have a Google Account
+ - [ ] Create a new project in Firebase Console
+ - [ ] Npm installed
 
-# run unit tests
-npm run unit
+<h2> Instructions </h2>
 
-# run all tests
-npm test
+* clone the repository with command bellow:
+``` sh
+$ git clone https://github.com/GabrielCarneiroDeveloper/vuejs_firebase.git
 ```
 
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+* Using the terminal, access the project folder and run the command:
+``` sh 
+$ npm install
+```
+* Access your Firebase Console and copy the snippet accounted to store your Firebase project data
+* Create a file called **firebaseConfigure.js** and paste your infos as bellow:
+
+``` sh
+export default { apiKey:  "your_api-key", authDomain:  "your_auth_domain", databaseURL:  "your_database_url", projectId:  "your_project_id", storageBucket:  "your_storage_bucket", messagingSenderId:  "your_message_sender_id"  };
+```
+* run command bellow to serve the project:
+
+``` sh
+$ npm start
+```
+<h2>Contacts</h2>
+
+If you have some question, improvement or issues at try to install/run the project, please contact me in my e-mail and i'll be glad to help you: ***carneiro.development@gmail.com***. 
+
+<h3>If you like it, please give a star ;D</h3>
